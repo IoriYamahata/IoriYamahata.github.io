@@ -1,11 +1,73 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>Iori Yamahata Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iori Yamahata | Portfolio</title>
+    <style>
+        body {
+            background-color: #0d1117; /* GitHubダークモード風の黒 */
+            color: #c9d1d9;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+        .container {
+            text-align: center;
+            z-index: 10;
+        }
+        h1 {
+            font-size: 3rem;
+            color: #58a6ff;
+            margin-bottom: 0.5rem;
+        }
+        p {
+            font-size: 1.2rem;
+            opacity: 0.8;
+        }
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
 </head>
-<body style="background: #111; color: #fff; font-family: sans-serif;">
-    <h1>Iori Yamahata</h1>
-    <p>Preparing for my first paper...</p>
+<body>
+    <canvas id="canvas"></canvas>
+
+    <div class="container">
+        <h1>Iori Yamahata</h1>
+        <p>Computational Systems Biology / Peptide Design</p>
+        <p style="font-size: 0.9rem;">Yamahata.iori@gmail.com</p>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <script>
+        function setup() {
+            createCanvas(windowWidth, windowHeight);
+            noStroke();
+        }
+
+        function draw() {
+            background(13, 17, 23, 25); // 少し残像を残す
+            let t = frameCount * 0.02;
+            
+            // マウスの周りに粒子を飛ばす簡単なアニメーション
+            for (let i = 0; i < 5; i++) {
+                fill(88, 166, 255, 150);
+                let x = mouseX + sin(t + i) * 50;
+                let y = mouseY + cos(t + i) * 50;
+                ellipse(x, y, 5);
+            }
+        }
+
+        function windowResized() {
+            resizeCanvas(windowWidth, windowHeight);
+        }
+    </script>
 </body>
 </html>
